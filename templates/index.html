@@ -1,0 +1,70 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hausa Lemmatizer</title>
+    <style>
+        .container{
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        h1{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: darkgreen;
+        }
+
+        button{
+            background-color: dodgerblue;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-weight: bolder;
+            color: #fff;
+
+        }
+
+        button:hover{
+            opacity: 0.75;
+            cursor: pointer;
+        }
+
+        hr{
+            color: #000;
+            border: 2px solid #000;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Hausa Lemmatizer</h1>
+    <p>&copy; Department of Computer Science UMYU Katsina | Developed By: Rabi'atu Abdullahi</p>
+    <form method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".txt, .docx" required>
+        <button type="submit">Upload and Process</button>
+    </form>
+    <hr><hr>
+    <br><br>
+    {% if result %}
+        <table border="1">
+            <tr>
+                <th>Original Word</th>
+                <th>Lemmatized Word</th>
+            </tr>
+            {% for original, lemmatized in result %}
+                <tr>
+                    <td>{{ original }}</td>
+                    <td>{{ lemmatized }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>
